@@ -2,34 +2,34 @@
   "AWSEBDockerrunVersion": 2,
   "volumes": [
     {
-      "name": "bookshelf",
+      "name": "application-source",
       "host": {
-        "sourcePath": "/var/app/current"
-      }
-    },
-    {
-      "name": "fpmconf",
-      "host": {
-        "sourcePath": "/var/app/current/docker/production/fpm/etc"
+        "sourcePath": "/var/app/current/app"
       }
     },
     {
       "name": "nginxconf",
       "host": {
-        "sourcePath": "/var/app/current/docker/production/nginx/conf"
+        "sourcePath": "/var/app/current/docker/production/nginx/conf.d"
       }
     }
   ],
   "containerDefinitions": [
     {
-      "name": "bookshelf-nginx",
-      "image": "fntlnz/nginx:1.9.2",
-      "environment": [
+      "name": "php-fpm",
+      "image": "nabilboag/php-mysql:latest",
+      "essential": true,
+      "memory": 128,
+      "mountPoints": [
         {
-          "name": "Container",
-          "value": "nginx"
+          "sourceVolume": "application-source",
+          "containerPath": "/var/www/example"
         }
-      ],
+      ]
+    },
+    {
+      "name": "nginx",
+      "image": "nginx",
       "portMappings": [
         {
           "hostPort": 80,
@@ -37,42 +37,19 @@
         }
       ],
       "links": [
-        "bookshelf-php"
+        "php-fpm"
       ],
       "essential": true,
       "memory": 128,
       "mountPoints": [
         {
-          "sourceVolume": "bookshelf",
-          "containerPath": "/var/www/bookshelf",
+          "sourceVolume": "application-source",
+          "containerPath": "/var/www/example",
           "readOnly": true
         },
         {
           "sourceVolume": "nginxconf",
-          "containerPath": "/usr/local/nginx/conf",
-          "readOnly": true
-        }
-      ]
-    },
-    {
-      "name": "bookshelf-php",
-      "image": "bookshelf/php:latest",
-      "environment": [
-        {
-          "name": "Container",
-          "value": "php-fpm"
-        }
-      ],
-      "essential": true,
-      "memory": 128,
-      "mountPoints": [
-        {
-          "sourceVolume": "bookshelf",
-          "containerPath": "/var/www/bookshelf"
-        },
-        {
-          "sourceVolume": "fpmconf",
-          "containerPath": "/usr/local/php/etc",
+          "containerPath": "/etc/nginx/conf.d",
           "readOnly": true
         }
       ]

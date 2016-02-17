@@ -1,3 +1,16 @@
+# Deploying a PHP application with docker and elasticbeanstalk
+
+## Requirements
+
+### Deploying development
+
+* [Docker](https://docs.docker.com/engine/installation/)
+* [Docker compose](https://docs.docker.com/compose/install/)
+
+### Deploying Production
+
+* [EB CLI](http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb-cli3-install.html)
+
 ### Docker environment setup
 
 ```

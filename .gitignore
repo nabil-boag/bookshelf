@@ -5,7 +5,7 @@
 npm_debug.log
 docker-compose.yml
 composer.phar
-
+nbroject
 
 # Elastic Beanstalk Files
 .elasticbeanstalk/*

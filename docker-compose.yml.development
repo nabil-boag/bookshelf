@@ -3,14 +3,14 @@ nginx:
   volumes_from:
     - fpm
   volumes:
-    - ./development/nginx/conf.d:/etc/nginx/conf.d
+    - ./docker/development/nginx/conf.d:/etc/nginx/conf.d
   ports:
     - "80:80"
   links:
     - fpm:fpm
 
 fpm:
-  build: development/fpm
+  build: docker/development/fpm
   volumes:
     - .:/var/www/example
   links:
