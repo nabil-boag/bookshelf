@@ -2,6 +2,7 @@
 
 <h2>Mysql Connection Properites</h2>
 <?php 
+echo $_SERVER['PARAM1'];
 
 $connection_envs = array(
     'dbname' => isset($_SERVER['MYSQL_DATABASE']) ? $_SERVER['MYSQL_DATABASE'] : 'demoapp',
