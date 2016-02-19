@@ -25,24 +25,6 @@
           "sourceVolume": "application-source",
           "containerPath": "/var/www/example"
         }
-      ],
-      "environment": [
-        {
-          "name": "MYSQL_USERNAME",
-          "value": "set-me-in-amazon-ui"
-        },
-        {
-          "name": "MYSQL_DATABASE",
-          "value": "set-me-in-amazon-ui"
-        },
-        {
-          "name": "MYSQL_PASSWORD",
-          "value": "set-me-in-amazon-ui"
-        },
-        {
-          "name": "MYSQL_HOST",
-          "value": "set-me-in-amazon-ui"
-        }
       ]
     },
     {
