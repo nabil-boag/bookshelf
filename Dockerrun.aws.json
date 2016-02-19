@@ -25,7 +25,11 @@
           "sourceVolume": "application-source",
           "containerPath": "/var/www/example"
         }
-      ]
+      ],
+      "environment": [{
+        "name": "PARAM1",
+        "value": "foo"
+      }]
     },
     {
       "name": "nginx",

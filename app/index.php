@@ -2,7 +2,8 @@
 
 <h2>Mysql Connection Properites</h2>
 <?php 
-echo $_SERVER['PARAM1'];
+var_dump(getenv('PARAM1'));
+
 
 $connection_envs = array(
     'dbname' => isset($_SERVER['MYSQL_DATABASE']) ? $_SERVER['MYSQL_DATABASE'] : 'demoapp',
@@ -11,7 +12,7 @@ $connection_envs = array(
     'dbhost' => isset($_SERVER['MYSQL_HOST']) ? $_SERVER['MYSQL_HOST'] : 'mysql',
 );
 
-var_dump($connection_envs);
+// var_dump($connection_envs);
 ?>
 
 <h2>Mysql Local</h2>
