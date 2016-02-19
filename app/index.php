@@ -2,8 +2,6 @@
 
 <h2>Mysql Connection Properites</h2>
 <?php
-var_dump($_SERVER['PARAM1']);
-var_dump($_SERVER['PARAM2']);
 $connection_envs = array(
     'dbhost' => isset($_SERVER['MYSQL_HOST']) ? $_SERVER['MYSQL_HOST'] : null,
     'dbname' => isset($_SERVER['MYSQL_DATABASE']) ? $_SERVER['MYSQL_DATABASE'] : null,
