@@ -15,6 +15,7 @@ RUN sed -i "s/;date.timezone =.*/date.timezone = UTC/" /etc/php5/fpm/php.ini && 
     sed -i "s/php_admin_flag\[log_errors\] = .*/;php_admin_flag[log_errors] =/" /etc/php5/fpm/pool.d/www.conf && \
     sed -i "s/php_admin_value\[error_log\] =.*/;php_admin_value[error_log] =/" /etc/php5/fpm/pool.d/www.conf && \
     sed -i "s/php_admin_value\[error_log\] =.*/;php_admin_value[error_log] =/" /etc/php5/fpm/pool.d/www.conf && \
+    sed -i "s/;clear_env = no/clear_env = no/" /etc/php5/fpm/pool.d/www.conf && \
     echo "php_admin_value[display_errors] = 'stderr'" >> /etc/php5/fpm/pool.d/www.conf
 
 CMD ["/usr/sbin/php5-fpm", "-F"]

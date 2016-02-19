@@ -1,10 +1,4 @@
-/public/vendor
-/bower_components
-/node_modules
-/vendor
-npm_debug.log
-docker-compose.yml
-composer.phar
+#docker-compose.yml
 nbroject
 
 # Elastic Beanstalk Files
