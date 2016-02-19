@@ -1,0 +1,29 @@
+nginx:
+  image: nginx
+  volumes_from:
+    - fpm
+  volumes:
+    - ./docker/development/nginx/conf.d:/etc/nginx/conf.d
+  ports:
+    - "80:80"
+  links:
+    - fpm:php-fpm
+
+fpm:
+  build: docker/development/fpm
+  volumes:
+    - ./app:/var/www/example
+  links:
+    - mysql:mysql
+  environment:
+    MYSQL_USERNAME: ${MYSQL_USERNAME}
+    MYSQL_DATABASE: ${MYSQL_DATABASE}
+    MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    MYSQL_HOST: ${MYSQL_HOST}
+
+mysql:
+  image: mysql
+  environment:
+    MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+
+
